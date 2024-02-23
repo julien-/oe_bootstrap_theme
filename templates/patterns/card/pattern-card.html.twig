@@ -5,6 +5,10 @@
  */
 #}
 {% apply spaceless %}
+{% set _image = image ? image|merge({
+    'path': image.src,
+    'alt': image.alt,
+}) %}
 {% set _left_col_classes = left_col_classes|default('col-4') %}
 {% set _right_col_classes = right_col_classes|default('col-8') %}
 {% set _content %}
@@ -53,10 +57,7 @@
     'tag': 'div',
   } : {},
   'content': _content,
-  'image': image ? {
-    'path': image.src,
-    'alt': image.alt,
-  },
+  'image': _image,
   'date': date|default({}),
   'card_header': header,
   'card_footer': footer,
