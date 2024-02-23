@@ -57,10 +57,15 @@
     'tag': 'div',
   } : {},
   'content': _content,
-  'image': _image,
+  'extra_classes_body' : extra_classes_body,
+  'image': image ? {
+    'path': image.src,
+    'alt': image.alt,
+  },
   'date': date|default({}),
   'card_header': header,
   'card_footer': footer,
+  'extra_classes_footer' : extra_classes_footer,
   'badges': _badges,
   'attributes': attributes,
 } only %}
