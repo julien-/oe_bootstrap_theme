@@ -1,10 +1,18 @@
 # Change Log
 
+## [1.18.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.18.0) (2024-12-16)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.17.0...1.18.0)
+
+**Merged pull requests:**
+
+- OEL-3577: Bump up BCL version. [\#454](https://github.com/openeuropa/oe_bootstrap_theme/pull/454) ([drishu](https://github.com/drishu))
+
 ## [1.17.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.17.0) (2024-11-06)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.16.0...1.17.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.17.0. [\#448](https://github.com/openeuropa/oe_bootstrap_theme/pull/448) ([tibi2303](https://github.com/tibi2303))
 - OEL-3421: Added accessible toggle for modal and offcanvas. [\#444](https://github.com/openeuropa/oe_bootstrap_theme/pull/444) ([tibi2303](https://github.com/tibi2303))
 - OEL-3417: Added subtitle tag for featured media. [\#438](https://github.com/openeuropa/oe_bootstrap_theme/pull/438) ([tibi2303](https://github.com/tibi2303))
 
