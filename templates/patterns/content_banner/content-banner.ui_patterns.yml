@@ -2,12 +2,6 @@ content_banner:
   label: 'Content banner'
   description: 'Shows the content summary along with the title, image and badges.'
   fields:
-    background:
-      type: string
-      label: 'Background'
-      description: 'Set a gray or white background at the content banner. Defaults to white.'
-      escape: false
-      preview: 'gray'
     image:
       type: ImageValueObject
       label: 'Image'
@@ -64,3 +58,11 @@ content_banner:
           path: "/example-1.html"
         - label: 'Link 2'
           path: "/example-2.html"
+  settings:
+    background:
+      type: textfield
+      label: 'Background'
+      description: 'Set a gray or white background at the content banner. Defaults to white.'
+      escape: false
+      preview: 'gray'
+      default_value: "white"
