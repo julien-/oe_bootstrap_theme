@@ -19,10 +19,15 @@ navigation:
       type: string
       label: 'Orientation'
       description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
+    tabs_content:
+      type: boolean
+      label: 'Tabs content'
+      description: 'Renders the "content" of each item in tab panes. Use with the "tabs" or "pills" variant. Items can set "id" (tab) and "target" (pane), else they are generated.'
+      preview: false
     items:
       type: array
       label: 'Navigation items'
-      description: 'Array of navigation items'
+      description: 'Array of navigation items. With "tabs_content", each item can have a "content" (render array or string).'
       preview:
         - label: "I'm a link 1"
           path: '#first'

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Template\Attribute;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
@@ -98,6 +99,40 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
  */
 function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): void {
   $variables['accordion_id'] = Html::getUniqueId('bcl-accordion');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for navigation pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_navigation(array &$variables): void {
+  if (empty($variables['tabs_content']) || empty($variables['items']) || !is_array($variables['items'])) {
+    return;
+  }
+
+  // The first tab is active by default.
+  $has_active = (bool) array_filter($variables['items'], static fn ($item) => is_array($item) && !empty($item['active']));
+  foreach ($variables['items'] as &$item) {
+    if (!is_array($item) || !isset($item['content'])) {
+      continue;
+    }
+    if (!$has_active) {
+      $item['active'] = $has_active = TRUE;
+    }
+    $item['target'] = $item['target'] ?? Html::getUniqueId('bcl-tab-pane');
+    $item['id'] = $item['id'] ?? $item['target'] . '-tab';
+    $item['path'] = $item['path'] ?? '#' . $item['target'];
+
+    // Bootstrap tab plugin data and ARIA state.
+    $attributes = $item['attributes'] ?? new Attribute();
+    if (is_array($attributes)) {
+      $attributes = new Attribute($attributes);
+    }
+    $item['attributes'] = $attributes
+      ->setAttribute('data-bs-toggle', 'tab')
+      ->setAttribute('data-bs-target', '#' . $item['target'])
+      ->setAttribute('aria-controls', $item['target'])
+      ->setAttribute('aria-selected', !empty($item['active']) ? 'true' : 'false');
+  }
 }
 
 /**
